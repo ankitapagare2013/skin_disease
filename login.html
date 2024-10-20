@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+        .main-heading {
+            font-size: 28px;
+            color: #514945;
+            text-shadow: 1px 1px #F5918F;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-container {
+            background-color: #E68369;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        .login-container h2 {
+            color: #894242;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .input-field {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+            color: #514945;
+            font-weight: bold;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #D55C5A;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+            color: #514945;
+        }
+
+        .input-field input:focus {
+            border-color: #F5918F;
+            box-shadow: 0 0 8px rgba(245, 145, 143, 0.5);
+        }
+
+        .btn {
+            background-color: #D55C5A;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #F5918F;
+            transform: translateY(-3px);
+        }
+
+        .error-message {
+            color: #D55C5A;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #514945;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-heading">Welcome to Skin Disease Diagnosis Login Page!</h1>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="input-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter Username" required>
+            </div>
+            <div class="input-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <p id="login-error" class="error-message"></p>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; Login page by Team1</p>
+    </footer>
+</body>
+</html>

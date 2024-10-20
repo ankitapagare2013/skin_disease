@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif,  Arial;
+        }
+
+        body {
+            background-color: white;
+            color: #514945;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #D55C5A;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            color: #F5918F;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            padding: 20px;
+            gap: 40px;
+        }
+
+        .text-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .text-section h1 {
+            font-size: 50px;
+            color: #894242;
+            margin-bottom: 20px;
+            white-space: nowrap;
+        }
+
+        .text-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #514945;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .Login {
+            background-color: #D55C5A;
+            color: #EBD4CC;
+        }
+
+        .Signup {
+            background-color: #D55C5A;
+            color: #EBD4CC;
+        }
+
+        .image-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-section img {
+            max-width: 150%;
+            height: auto;
+            border-radius: 0;
+            background-color: white;
+            transform: translateX(70px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #514945;
+            color: white;
+            margin-top: 40px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            <div class="text-section">
+                <h1>Welcome to the Home Page!</h1>
+                <p>Welcome to the Home page of Advanced Skin Disease Diagnosis leveraging image processing. This project is by Team1</p>
+                <p>Choose the options below if you want to Login or Signup</p>
+                <div class="buttons">
+                    <button class="btn Login">Login</button>
+                    <button class="btn Signup">Signup</button>
+                </div>
+            </div>
+            <div class="image-section">
+                <img src="https://img.freepik.com/free-vector/tiny-dermatologists-examining-skin-patient-hospital_74855-17896.jpg?t=st=1729444902~exp=1729448502~hmac=c8503e1edc22a8e107009c47c1645590d3c1ebb8dd3602efb2dfbba1af055e6d&w=996" alt="Examining Skin">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; HomePage by Team1</p>
+    </footer>
+</body>
+</html>
