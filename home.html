@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: sans-serif,  Arial;
+            font-family: sans-serif, Arial;
         }
 
         body {
@@ -66,6 +66,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            transform: translateX(-90px); /* Shifts the text section to the left */
         }
 
         .text-section h1 {
@@ -117,11 +118,11 @@
         }
 
         .image-section img {
-            max-width: 150%;
+            max-width: 175%;
             height: auto;
             border-radius: 0;
             background-color: white;
-            transform: translateX(70px);
+            transform: translateX(40px);
         }
 
         footer {
@@ -137,6 +138,11 @@
 <body>
     <header>
         <nav>
+            <ul>
+                <li><a href="/home" id="hom">Home</a></li>
+                <li><a href="/login" id="log">Login</a></li>
+                <li><a href="/signup" id="sig">Signup</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -144,11 +150,12 @@
         <div class="content">
             <div class="text-section">
                 <h1>Welcome to the Home Page!</h1>
-                <p>Welcome to the Home page of Advanced Skin Disease Diagnosis leveraging image processing. This project is by Team1</p>
-                <p>Choose the options below if you want to Login or Signup</p>
+                <p>Welcome to the Home page of Advanced Skin Disease Diagnosis leveraging image processing.</p>
+                <p>   This project is made by Team1   </p>
+                <p>Click the buttons below if you want to Login or Signup</p>
                 <div class="buttons">
-                    <button class="btn Login">Login</button>
-                    <button class="btn Signup">Signup</button>
+                    <button class="btn Login"><a href="/login" id='log' style="color: inherit; text-decoration: none;">Login</a></button>
+                    <button class="btn Signup"><a href="/signup" id= 'sign' style="color: inherit; text-decoration: none;">Signup</a></button>
                 </div>
             </div>
             <div class="image-section">
