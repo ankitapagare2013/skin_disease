@@ -23,6 +23,12 @@
             padding: 20px 0;
         }
 
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50px;
+        }
+
         nav ul {
             display: flex;
             justify-content: center;
@@ -30,17 +36,22 @@
         }
 
         nav ul li {
-            margin: 0 20px;
+            margin: 0 6px; /* Reduced spacing between buttons */
         }
 
+        /* Styling the Login and Signup buttons */
         nav ul li a {
-            color: white;
-            text-decoration: none;
+            padding: 10px 20px;
             font-size: 18px;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            background-color: #894242;
         }
 
         nav ul li a:hover {
-            color: #F5918F;
+            background-color: #F5918F;
         }
 
         main {
@@ -82,35 +93,6 @@
             color: #514945;
         }
 
-        .buttons {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 12px 25px;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        .Login {
-            background-color: #D55C5A;
-            color: #EBD4CC;
-        }
-
-        .Signup {
-            background-color: #D55C5A;
-            color: #EBD4CC;
-        }
-
         .image-section {
             flex: 1;
             display: flex;
@@ -139,9 +121,8 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/home" id="hom">Home</a></li>
                 <li><a href="/login" id="log">Login</a></li>
-                <li><a href="/signup" id="sig">Signup</a></li>
+                <li><a href="/signup" id="sign">Signup</a></li>
             </ul>
         </nav>
     </header>
@@ -151,12 +132,7 @@
             <div class="text-section">
                 <h1>Welcome to the Home Page!</h1>
                 <p>Welcome to the Home page of Advanced Skin Disease Diagnosis leveraging image processing.</p>
-                <p>   This project is made by Team1   </p>
-                <p>Click the buttons below if you want to Login or Signup</p>
-                <div class="buttons">
-                    <button class="btn Login"><a href="/login" id='log' style="color: inherit; text-decoration: none;">Login</a></button>
-                    <button class="btn Signup"><a href="/signup" id= 'sign' style="color: inherit; text-decoration: none;">Signup</a></button>
-                </div>
+                <p>This project is made by Team1</p>
             </div>
             <div class="image-section">
                 <img src="https://img.freepik.com/free-vector/tiny-dermatologists-examining-skin-patient-hospital_74855-17896.jpg?t=st=1729444902~exp=1729448502~hmac=c8503e1edc22a8e107009c47c1645590d3c1ebb8dd3602efb2dfbba1af055e6d&w=996" alt="Examining Skin">
