@@ -43,73 +43,41 @@ def signup(request):
 
 
 def profile(request):
-    if request.method == 'POST' and request.FILES.get('uploaded_image'):
-        uploaded_image = request.FILES['uploaded_image']
-
-        # Validate that the uploaded file is an image
-        if not uploaded_image.content_type.startswith('image/'):
-            return render(request, 'profile.html', {'error_message': 'Invalid file type. Please upload an image.'})
-
-        fs = FileSystemStorage()
-        filename = fs.save(uploaded_image.name, uploaded_image)
-        uploaded_image_url = fs.url(filename)
-
-        # Load the uploaded image
-        image_path = os.path.join(settings.MEDIA_ROOT, filename)
-        img = cv2.imread(image_path)
-
-        if img is None:
-            return render(request, 'profile.html', {'error_message': 'Could not read the image file.'})
-        
-        # Resize the image
-        img_resize = cv2.resize(img, (183, 275))
-        if len(img_resize.shape) == 2:
-            img_resize = cv2.cvtColor(img_resize, cv2.COLOR_GRAY2BGR)
-        img_normalize = img_resize / 255.0
-        img_normalize = (img_normalize * 255).astype(np.uint8)
-
-        # Dimension convert
-        img_dim = np.expand_dims(img_normalize, axis=0)
-        print(img_dim)
-        
-        # Convert to grayscale and apply blur
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-
-        # Threshold
-        _, thresh = cv2.threshold(blurred, 120, 255, cv2.THRESH_BINARY_INV)
-
-        # Find contours
-        contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        result_img = img.copy()
-
-        detected_areas = []
-        for contour in contours:
-            x, y, w, h = cv2.boundingRect(contour)
-
-            # Adjust conditions based on your uploaded image characteristics
-            if w > 10 and h > 10:
-                detected_areas.append((x, y, w, h))
-
-                # Draw rectangle and annotate on the image
-                cv2.rectangle(result_img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                cv2.putText(result_img, f"W:{w}, H:{h}", (x, y - 10),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1)
-
-        # Save processed image
-        processed_filename = f'processed_{filename}'
-        processed_path = os.path.join(settings.MEDIA_ROOT, processed_filename)
-        cv2.imwrite(processed_path, result_img)
-        processed_image_url = fs.url(processed_filename)
-
-        # Prepare output data
-        areas_info = [f"Width={w} px, Height={h} px" for (x, y, w, h) in detected_areas]
-
-        return render(request, 'profile.html', {
-            'uploaded_image_url': uploaded_image_url,
-            'processed_image_url': processed_image_url,
-            'areas_info': areas_info
-        })
-
-    return render(request, 'profile.html')
+    img_url = None
+    result1 = None
+    result2 = None
+    
+    if(request.method=="POST"):
+        if(request.FILES.get('uploadImage')):
+            img_name = request.FILES['uploadImage']
+            # create a variable for our FileSystem package
+            fs = FileSystemStorage()
+            filename = fs.save(img_name.name,img_name)
+            #urls
+            img_url = fs.url(filename)
+            #find the path of the image
+            img_path = fs.path(filename)
+ 
+            #start implementing the opencv condition
+            img = cv2.imread(img_path,cv2.IMREAD_COLOR)
+            # Convert to grayscale (single channel)
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            #resize the image for a constant use
+            img = cv2.resize(img,(64,64))
+            #flatten the image for the better clear shape of the disease spread on the skin
+            img = img.flatten()
+            #using the normalization predefined function to find the value
+            img = np.expand_dims(img,axis=0)
+ 
+            #we sill start executing with our model
+            predict = model.predict(img)[0]
+            
+            ''''''
+            skin_disease_names = ['Cellulitis','Impetigo','Athlete Foot','Nail Fungus','Ringworm','Cutaneous Larva Migrans','Chickenpox','Shingles']
+            # diagnosis = ['']
+ 
+            result1 = skin_disease_names[predict]
+            # result2 = diagnosis[predict]
+ 
+    return render(request,'profile.html',{'img':img_url,'obj1':result1,'obj2':result2})
    
