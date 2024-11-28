@@ -24,10 +24,10 @@
         .image-container {
             text-align: center;
         }
-        img {
-            max-width: 100%;
+        .image-container img{
+            width: 90%;
             height: auto;
-            border-radius: 10px;
+            border-radius: 8px;
         }
         ul {
             list-style: none;
@@ -51,35 +51,28 @@
         <h2>Skin Disease Diagnosis</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="file" name="uploaded_image" accept="image/*" required>
+            <label for="uploadedImage"></label>
+            <input type="file" name="uploadImage" accept="image/*" required>
             <input type="submit" value="Upload">
         </form>
-
-        {% if uploaded_image_url %}
-            <h3>Original Uploaded Image:</h3>
-            <div class="image-container">
-                <img src="{{ uploaded_image_url }}" alt="Original Image">
-            </div>
-        {% endif %}
-
-        {% if processed_image_url %}
-            <h3>Processed Image with Detected Skin Defects:</h3>
-            <div class="image-container">
-                <img src="{{ processed_image_url }}" alt="Processed Image">
-            </div>
-
-            <h4>Detected Areas:</h4>
-            <ul>
-                {% for area in areas_info %}
-                    <li>{{ area }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-
-        {% if error_message %}
-            <div class="message">{{ error_message }}</div>
-        {% endif %}
+        <div>
+            {% if img %}
+                <h2>Disease Image:</h2>
+                <div class="image-container">
+                    <img src="{{ img }}" alt="Original Image">
+                </div>
+            {% endif %}
+            <br><br>
+            {% if obj1 %}
+                <h2>{{ obj1 }}</h2>
+            {% endif %}
+            <br><br>
+            {% if obj2 %}
+                <h2>{{ disease_name }}</h2>
+            {% endif %}
+        </div>
     </div>
 </body>
 </html>
+
 
